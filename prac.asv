@@ -1,0 +1,26 @@
+c1 = imread('House.tif');
+
+g1 = rgb2gray(c1);
+
+subplot(4,2,1);
+imshow(g1);
+title("gray");
+
+
+niga = 255-g1;
+subplot(4,2,2);
+imshow(niga);
+title("niga");
+
+contra = imadjust(g1);
+subplot(4,2,3);
+imshow(contra);
+title('contra');
+
+intensity_sliced_image = g1;
+intensity_sliced_image(g1 >= 50 & g1 <= 150) = 255;
+intensity_sliced_image(g1 < 50 | g1 > 150) = 0;
+
+subplot(4,2,4);
+imshow(intensity_sliced_image);
+title('Intensity Sliced Image');
